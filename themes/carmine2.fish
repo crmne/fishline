@@ -4,7 +4,7 @@
 
 # Color for PWD and FULLPWD segment
 set FLCLR_PWD_BG            4e4e4e
-set FLCLR_PWD_FG            white
+set FLCLR_PWD_FG            CCCCCC
 set FLCLR_PWD_BG_HOME       $FLCLR_PWD_BG
 set FLCLR_PWD_FG_HOME       $FLCLR_PWD_FG
 set FLCLR_FULLPWD_BG        $FLCLR_PWD_BG
@@ -12,11 +12,11 @@ set FLCLR_FULLPWD_FG        $FLCLR_PWD_FG
 
 # Color for STATUS segment
 set FLCLR_STATUS_BG         red
-set FLCLR_STATUS_FG         white
+set FLCLR_STATUS_FG         CCCCCC
 
 # Color for WRITE segment
 set FLCLR_WRITE_BG          red
-set FLCLR_WRITE_FG          white
+set FLCLR_WRITE_FG          CCCCCC
 
 # Color for ARROW  segment
 set FLCLR_ARROW_BG          $FLCLR_PWD_BG
@@ -34,14 +34,14 @@ set FLCLR_VFISH_FG          222222
 
 # Color for GIT segment
 set FLCLR_GIT_BG_CLEAN      3a3a3a
-set FLCLR_GIT_FG_CLEAN      white
+set FLCLR_GIT_FG_CLEAN      CCCCCC
 set FLCLR_GIT_BG_DIRTY      red
 set FLCLR_GIT_FG_DIRTY      222222
 set FLCLR_GIT_BG_DETACHED   yellow
 set FLCLR_GIT_FG_DETACHED   222222
 
 # Color for CLOCK segment
-set FLCLR_CLOCK_BG          white
+set FLCLR_CLOCK_BG          CCCCCC
 set FLCLR_CLOCK_FG          222222
 
 # Color for USERHOST segment
