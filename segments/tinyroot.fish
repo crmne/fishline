@@ -1,17 +1,11 @@
 #!/usr/bin/env fish
 # -*-  mode:fish; tab-width:4  -*-
-set FLSYM_ROOT_ROOT "\u221E"
-set FLSYM_ROOT_USER "\u2192"
 
-function FLSEG_ROOT
+function FLSEG_TINYROOT
 
 	if echo $USER  | grep '^root$' >>  /dev/null
 		FLINT_CLOSE $FLCLR_ROOT_BG_ROOT $FLCLR_ROOT_FG_ROOT
-		set_color -o
-		printf $FLSYM_ROOT_ROOT
 	else
 		FLINT_CLOSE $FLCLR_ROOT_BG_USER $FLCLR_ROOT_FG_USER
-		set_color -o
-		printf $FLSYM_ROOT_USER
 	end
 end

@@ -1,10 +1,10 @@
 #!/usr/bin/env fish
 # -*-  mode:fish; tab-width:4  -*-
 set FLSYM_GIT_BRANCH "\uE0A0 "
-set FLSYM_GIT_DETACHED "\u21CC  "
-set FLSYM_GIT_UNTRACKED "\u00D7"
-set FLSYM_GIT_UNSTAGED "\u002B"
-set FLSYM_GIT_STAGED "\u2219"
+set FLSYM_GIT_DETACHED "\u21CC "
+set FLSYM_GIT_UNTRACKED "?"
+set FLSYM_GIT_UNSTAGED "~"
+set FLSYM_GIT_STAGED "+"
 set FLSYM_GIT_AHEAD "\u21E1"
 set FLSYM_GIT_BEHIND "\u21E3"
 
@@ -42,28 +42,39 @@ function FLSEG_GIT
 		switch $state
 		case Dirty
 			FLINT_CLOSE $FLCLR_GIT_BG_DIRTY $FLCLR_GIT_FG_DIRTY
-			printf "$FLSYM_GIT_BRANCH"
 		case Detached
 			FLINT_CLOSE $FLCLR_GIT_BG_DETACHED $FLCLR_GIT_FG_DETACHED
-			printf "$FLSYM_GIT_DETACHED"
 		case '*'
 			FLINT_CLOSE $FLCLR_GIT_BG_CLEAN $FLCLR_GIT_FG_CLEAN
+		end
+
+		if [ $gitstatus[3] -eq 1 ]
+			printf "$FLSYM_GIT_STAGED%s " (git diff --cached --numstat | wc -l)
+		end
+		if [ $gitstatus[4] -eq 1 ]
+			printf "$FLSYM_GIT_UNSTAGED%s " (git diff --numstat | wc -l)
+		end
+		if [ $gitstatus[5] -eq 1 ]
+			printf "$FLSYM_GIT_UNTRACKED%s " (git ls-files --others --exclude-standard | wc -l)
+		end
+
+
+		switch $state
+		case Dirty
+			printf "$FLSYM_GIT_BRANCH"
+		case Detached
+			printf "$FLSYM_GIT_DETACHED"
+		case '*'
 			printf "$FLSYM_GIT_BRANCH"
 		end
 
 		printf "$gitstatus[2]"
+
 		if [ $gitstatus[6] -gt 0 ]
 			printf " %d$FLSYM_GIT_AHEAD" $gitstatus[6]
 		end
 		if [ $gitstatus[7] -gt 0 ]
 			printf " %d$FLSYM_GIT_AHEAD" $gitstatus[7]
-		end
-		if [ $gitstatus[5] -eq 1 ]
-			printf " $FLSYM_GIT_UNTRACKED"
-		else if [ $gitstatus[4] -eq 1 ]
-			printf " $FLSYM_GIT_UNSTAGED"
-		else if [ $gitstatus[3] -eq 1 ]
-			printf " $FLSYM_GIT_STAGED"
 		end
 	end
 
