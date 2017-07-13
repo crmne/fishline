@@ -49,13 +49,13 @@ function FLSEG_GIT
 		end
 
 		if [ $gitstatus[3] -eq 1 ]
-			printf "$FLSYM_GIT_STAGED%s " (git diff --cached --numstat | wc -l)
+			printf "$FLSYM_GIT_STAGED%d " (git diff --cached --numstat | wc -l)
 		end
 		if [ $gitstatus[4] -eq 1 ]
-			printf "$FLSYM_GIT_UNSTAGED%s " (git diff --numstat | wc -l)
+			printf "$FLSYM_GIT_UNSTAGED%d " (git diff --numstat | wc -l)
 		end
 		if [ $gitstatus[5] -eq 1 ]
-			printf "$FLSYM_GIT_UNTRACKED%s " (git ls-files --others --exclude-standard | wc -l)
+			printf "$FLSYM_GIT_UNTRACKED%d " (git ls-files --others --exclude-standard | wc -l)
 		end
 
 
