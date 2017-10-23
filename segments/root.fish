@@ -1,7 +1,7 @@
 #!/usr/bin/env fish
 # -*-  mode:fish; tab-width:4  -*-
-set FLSYM_ROOT_ROOT "\u221E"
-set FLSYM_ROOT_USER "\u2192"
+set -q FLSYM_ROOT_ROOT; or set FLSYM_ROOT_ROOT "\u221E"
+set -q FLSYM_ROOT_USER; or set FLSYM_ROOT_USER "\u2192"
 
 function FLSEG_ROOT
 
